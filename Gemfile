@@ -50,5 +50,3 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'rails_12factor', group: :production
 
 gem 'autoprefixer-rails'
-gem 'rails_12factor', group: :production
-
