@@ -1,0 +1,34 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    text-align: center;
+    background: url("mainimage.jpg");
+    background-size: cover;
+    background-position: center;
+    color: navy;
+/*    font-family: helvetica;
+*/}
+
+.recipe {
+    font-size: 125%;
+    text-align: left;
+    width: 400px;
+    margin: 30px;
+    padding: 5px;
+    background-color: #ffffff;
+
+}
+
+div.transbox {
+	text-align: center;
+    width: 500px;
+/*    margin: 30px 50px;
+*/    
+	margin: 0 auto;
+	padding: 10px;
+    background-color: #ffffff;
+/*    opacity: 0.6;
+*/    filter: alpha(opacity=60); /* For IE8 and earlier */
+}

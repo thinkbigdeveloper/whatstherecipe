@@ -1,0 +1,47 @@
+	<% if @recipe.errors.any? %>
+  	<h2>There were errors saving your recipe.</h2>
+  	<ul>
+    <% @recipe.errors.full_messages.each do |msg| %>
+    <strong><%= msg %></strong><br />
+    <% end %>
+    <% end %>
+
+<%= form_for @recipe do |form| %>
+	<div>
+	<%= form.label :'Dish Name' %>	<br />
+	<%= form.text_field :title %>
+	</div>
+	<br />
+	<div>
+	<%= form.label :Image %>	<br />
+	<%= form.text_field :img_URL %>
+	</div>
+	<br />
+	<div>
+	<%= form.label :Restaurant %>	<br />
+	<%= form.text_field :restaurant %>
+	</div>
+	<br />
+	<div>
+	<%= form.label :Cuisine %>	<br />
+	<%= form.text_field :cuisine %>
+	</div>
+	<br />
+	<div>
+	<%= form.label :'Dish Type' %>	<br />
+	<%= form.text_field :dish_type%>
+	</div>
+	<br />
+	<div>
+	<%= form.label :Ingredients %>	<br />
+	<%= form.text_area :ingredients %>
+	</div>
+	<br />
+	<div>
+	<%= form.label :Cooking_steps %>	<br />
+	<%= form.text_area :cooking_steps %>
+	</div><br />
+	<% :user_id %>
+	<div><%= form.submit %></div>
+
+<% end %>

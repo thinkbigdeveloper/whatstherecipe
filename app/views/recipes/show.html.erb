@@ -1,0 +1,96 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         
+          <a class="navbar-brand" href="#">What's The Recipe?</a>
+        </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+        		<li>
+        	  		<a href="/">
+           			<span class="glyphicon glyphicon-home"></span>
+        			</a>
+        	  	</li>
+            	<li class="active"><%= link_to 'View Recipes', recipes_path %>
+            	</li>
+        <% if user_signed_in? %>
+          		<li>
+				<%= link_to 'Create Recipe', new_recipe_path %>
+				</li>
+				<li>
+              <%= link_to "View Profile", user_path(@user) %>
+             <%#= link_to 'View Profile', user_path, :method => :get %>
+           </li>
+				<li>
+				<%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+				</li>
+		<% end %>
+	
+				<li>
+		<% if user_signed_in? == false %>
+				<%= link_to 'Sign In', new_user_session_path %>
+				</li>
+				<li>
+				<%= link_to 'Sign Up', new_user_registration_path %>
+				</li>	
+		<% end %>
+			
+		</ul>
+        </div><!--/.nav-collapse -->
+      
+
+    </nav>
+
+    <h2>RECIPE</h2>
+<div class="recipe">
+	<p>
+		<h2><strong>Dish Name: </strong><br />
+			<%= @recipe.title %></h2><br />
+		<img src=<%= @recipe.img_URL %> style="max-width:300px;border-radius:10px;"><br /><br />
+		<strong>As found in: </strong><%= @recipe.restaurant %><br />
+		<strong>Cuisine: </strong><%= @recipe.cuisine %><br />
+		<strong>Dish Type: </strong><%= @recipe.dish_type %><br /><br />
+		<strong>Ingredients: </strong><%= @recipe.ingredients %><br /><br />
+		<strong>Cooking Steps: </strong><%= @recipe.cooking_steps %><br /><br />
+	</p>
+<% if user_signed_in? == false %>
+<%= link_to 'Comment On This Recipe!', new_user_session_path %>
+<% end %>
+
+	<h3>Comments</h3>
+	<% @comments.each do |comment| %>
+  		<div>
+    	<p>"<%= comment.body %>"</p>
+    	<strong> - <%= User.find(comment.user_id).email %></strong>
+    	<strong> - <%= User.find(comment.user_id).name %></strong>
+
+    	<p><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  		</div>
+	<% end %>
+<!-- 	_path
+ -->
+		<% if user_signed_in? %>
+	<h3>Comment On This Recipe!</h3>
+			<%= form_for @comment do |form| %>
+		<div>
+			<%= form.label :'Comment' %>	<br />
+			<%= form.text_area :body %>
+		</div>
+			<%= hidden_field_tag :recipe_id, @recipe.id %>
+		<div><%= form.submit %></div>
+	<% end %>
+<%end%>
+<% if user_signed_in? && current_user.id == @recipe.user_id %>
+
+<%= link_to 'Edit Recipe', edit_recipe_path(@recipe[:id]) %>
+<br />
+<%= link_to 'Delete Recipe', recipe_path(@recipe[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</div>
