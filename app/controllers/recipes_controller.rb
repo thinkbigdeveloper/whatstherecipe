@@ -7,8 +7,7 @@ class RecipesController < ApplicationController
     end
 
     # def random
-    # generator = Generator.find(params[:recipe][:all]
-    # @recipe = Generator.order("RAND(id)").first
+    #   @recipe = Recipe.find_by
     # end
 
 
