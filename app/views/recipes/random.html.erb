@@ -1,0 +1,12 @@
+		<p>
+		<h2><strong>Dish Name: </strong><br />
+			<%= @recipe.title %></h2><br />
+		<%if @recipe.img_URL? %>
+		<img src=<%= @recipe.img_URL %> style="max-width:300px;border-radius:10px;"><br /><br />
+		<%end%>
+		<strong>As found in: </strong><%= @recipe.restaurant %><br />
+		<strong>Cuisine: </strong><%= @recipe.cuisine %><br />
+		<strong>Dish Type: </strong><%= @recipe.dish_type %><br /><br />
+		<strong>Ingredients: </strong><%= @recipe.ingredients %><br /><br />
+		<strong>Cooking Steps: </strong><%= @recipe.cooking_steps %><br /><br />
+		</p>

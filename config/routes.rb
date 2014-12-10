@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :recipes
   resources :comments
   resources :users
+
+  get '/recipes/random', to: 'recipes#random'
+
   # resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -4,11 +4,11 @@
 
 body {
     text-align: center;
-    background: image-url("mainimage.jpg");
+    background: image-url("veggies.jpg");
     background-size: cover;
     background-position: center;
-    color: navy;
-/*    font-family: helvetica;
+/*    color: navy;
+*//*    font-family: helvetica;
 */}
 
 .recipe {
@@ -23,7 +23,7 @@ body {
 
 div.transbox {
 	text-align: center;
-    width: 500px;
+    width: 600px;
 /*    margin: 30px 50px;
 */    
 	margin: 0 auto;
@@ -31,4 +31,25 @@ div.transbox {
     background-color: #ffffff;
 /*    opacity: 0.6;
 */    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.notice {
+
+    color:#6699FF;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/*.alert {
+
+    color:#6699FF;
+    margin-top: 10px;
+    font-size: 12px;
+}*/
+
+.glyphicon.glyphicon-user{
+
+    height: 100%;
+    margin-top: 15px;
+    margin-left: 2px;
 }

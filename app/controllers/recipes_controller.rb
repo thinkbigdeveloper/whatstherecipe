@@ -3,12 +3,19 @@ class RecipesController < ApplicationController
 
 	  def index
     @recipes = Recipe.search_for(params[:q])
+    @user = current_user
     end
 
+    # def random
+    # generator = Generator.find(params[:recipe][:all]
+    # @recipe = Generator.order("RAND(id)").first
+    # end
 
 
   	def new
   	@recipe = Recipe.new
+    @user = current_user
+
   	end
 
   	def create

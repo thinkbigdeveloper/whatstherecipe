@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
           </button>
          
-          <a class="navbar-brand" href="#">What's The Recipe?</a>
+          <a class="navbar-brand"><img src="/assets/WTRLogo.png" style="height:100%;margin-right:10px;"/></a>
 </div>
         
 <div id="navbar" class="collapse navbar-collapse">
@@ -26,9 +26,8 @@
 				<%= link_to 'Create Recipe', new_recipe_path %>
 				</li>
 				<li>
-              <%= link_to "View Profile", user_path(@user) %>
-             <%#= link_to 'View Profile', user_path, :method => :get %>
-           </li>
+              <p><%= link_to raw('<span class="glyphicon glyphicon-user"> Profile </span>'), user_path(@user) %></p>
+            </li>
 				<li>
 				<%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
 				</li>
@@ -47,7 +46,9 @@
 </div><!--/.nav-collapse -->
       
 </nav>
-
+    <div class="transbox">
+<br />
+<br />
     <h2>RECIPE</h2>
 <!-- <div class="recipe">
  -->	<p>
@@ -95,4 +96,5 @@
 <br />
 <%= link_to 'Delete Recipe', recipe_path(@recipe[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
+</div>
 <!-- </div> -->
