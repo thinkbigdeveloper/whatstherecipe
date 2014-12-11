@@ -67,9 +67,9 @@
 <% end %>
 
 <% @recipes.each do |recipe| %><br />
-	Dish Name: <%= link_to recipe.title, recipe %><br />
+	<h3>Dish Name: <%= link_to recipe.title, recipe %><br />
 	Restaurant: <%= recipe.restaurant%><br />
-	Cuisine: <%= recipe.cuisine %><br />
+	Cuisine: <%= recipe.cuisine %><br /></h3>
 <!--     User Id: <%= recipe.user_id %>
  -->	<br />
 	<% end %>
