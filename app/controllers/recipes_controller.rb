@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update(title: params["recipe"]["title"], cuisine: params["recipe"]["cuisine"], dish_type: params["recipe"]["dish_type"], ingredients: params["recipe"]["ingredients"], cooking_steps: params["recipe"]["cooking_steps"], restaurant: params["recipe"]["restaurant"])
+    @recipe.update(title: params["recipe"]["title"], cuisine: params["recipe"]["cuisine"], img_URL: params["recipe"]["img_URL"], dish_type: params["recipe"]["dish_type"], ingredients: params["recipe"]["ingredients"], cooking_steps: params["recipe"]["cooking_steps"], restaurant: params["recipe"]["restaurant"])
     redirect_to recipes_path 
   end
 

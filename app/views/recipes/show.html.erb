@@ -48,55 +48,72 @@
 </div><!--/.nav-collapse -->
       
 </nav>
-    <div class="transbox">
-<br />
-<br />
-    <h2>RECIPE</h2>
+<div class="transbox">
+	<br />
+	<br />
+   <h2>RECIPE</h2>
 <!-- <div class="recipe">
  -->	<p>
 		<h2><strong>Dish Name: </strong><br />
-			<%= @recipe.title %></h2><br />
+			<%= @recipe.title %>
+		</h2>
+		<br />
+		
 		<%if @recipe.img_URL? %>
 		<img src=<%= @recipe.img_URL %> style="max-width:300px;border-radius:10px;"><br /><br />
 		<%end%>
+
+
+
+
 		<strong>As found in: </strong><%= @recipe.restaurant %><br />
 		<strong>Cuisine: </strong><%= @recipe.cuisine %><br />
 		<strong>Dish Type: </strong><%= @recipe.dish_type %><br /><br />
 		<strong>Ingredients: </strong><%= @recipe.ingredients %><br /><br />
 		<strong>Cooking Steps: </strong><%= @recipe.cooking_steps %><br /><br />
 		</p>
-<% if user_signed_in? == false %>
-<%= link_to 'Comment On This Recipe!', new_user_session_path %>
-<% end %>
+		
+		<% if user_signed_in? == false %>
+		<%= link_to 'Comment On This Recipe!', new_user_session_path %>
+		<% end %>
 
-	<h3>Comments</h3>
-	<% @comments.each do |comment| %>
+		<h3>Comments</h3>
+		<% @comments.each do |comment| %>
   		<div>
     	<p>"<%= comment.body %>"</p>
-    	<strong> - <%= User.find(comment.user_id).email %></strong>
-    	<strong> - <%= User.find(comment.user_id).name %></strong>
+<!--     	<strong> - <%= User.find(comment.user_id).email %></strong>
+ -->    	<strong> - <%= User.find(comment.user_id).name %></strong>
 
-    	<p><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    	<p>
+    		<% if comment.user == current_user  %>
+    		<%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+    	</p>
+    	<% end %>
   		</div>
-	<% end %>
-<!-- 	_path
- -->
+    	<% end %>
+
+
 		<% if user_signed_in? %>
-	<h3>Comment On This Recipe!</h3>
+		<h3>Comment On This Recipe!</h3>
 			<%= form_for @comment do |form| %>
 		<div>
-			<%= form.label :'Comment' %>	<br />
+			<%= form.label :'Comment' %>	
+			<br />
 			<%= form.text_area :body %>
 		</div>
 			<%= hidden_field_tag :recipe_id, @recipe.id %>
-		<div><%= form.submit %></div>
-	<% end %>
-<%end%>
-<% if user_signed_in? && current_user.id == @recipe.user_id %>
+			<%= hidden_field_tag :user_id, @user.id %>
 
-<%= link_to 'Edit Recipe', edit_recipe_path(@recipe[:id]) %>
-<br />
-<%= link_to 'Delete Recipe', recipe_path(@recipe[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+		<div><%= form.submit %></div>
+		<% end %>
+<!-- 		<% end %>
+ -->
+
+		<% if user_signed_in? && current_user.id == @recipe.user_id %>
+		<%= link_to 'Edit Recipe', edit_recipe_path(@recipe[:id]) %>
+		<br />
+		<%= link_to 'Delete Recipe', recipe_path(@recipe[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	
 </div>
 <!-- </div> -->

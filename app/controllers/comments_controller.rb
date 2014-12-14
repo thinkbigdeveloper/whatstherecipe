@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+
 	def new
 		@comment = Comment.new
 	end
@@ -25,7 +26,8 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-	    @comment = Comment.find(params[:id])
+		@user = current_user
+		@comment = Comment.find(params[:id])
 	    @comment.destroy
 	    # redirect_to recipes_path
 	    redirect_to :back
